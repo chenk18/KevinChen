@@ -23,8 +23,8 @@ int main()
     int count = 0;
     int sum = 0;
     int score = 0;
-    int min = 0;
-    int max = 0;
+    int minScore = 0;
+    int maxScore = 0;
 
     const int GRADE_A = 90;
     const int GRADE_B = 80;
@@ -33,27 +33,26 @@ int main()
 
     // TODO 2: Print this prompt exactly once, before reading any input:
     //         "Enter quiz scores (Ctrl+D / Ctrl+Z to end):"
-    std::cout << "Enter quiz scores (Ctrl+D / Ctrl+Z to end):" << std::endl;
-
+    std::cout << "Enter quiz scores (Ctrl+D / Ctrl+Z to end):\n";
     // TODO 3: Read scores one at a time, for as many scores as the user
-    //         enters, updating your count/sum/min/max variables for each
+    //         enters, updating your count/sum/minScore/maxScore variables for each
     //         score read. You do not know in advance how many scores
     //         will be entered, so the number of times you read a score
     //         must not be fixed or asked from the user.
     while (std::cin >> score) {
         if (count == 0) {
-            min = score;
-            max = score;
+            minScore = score;
+            maxScore = score;
         }
 
         count += 1;
         sum += score;
 
-        if (score < min) {
-            min = score;
+        if (score < minScore) {
+            minScore = score;
         }
-        if (score > max) {
-            max = score;
+        if (score > maxScore) {
+            maxScore = score;
         }
     }
 
@@ -61,7 +60,7 @@ int main()
     //         "No scores were entered."
     //         and end the program without doing anything else below.
     if (count == 0) {
-        std::cout << "No scores were entered." << std::endl;
+        std::cout << "No scores were entered.\n";
         return 0;
     }
 
@@ -73,7 +72,7 @@ int main()
     //         described in the assignment (90, 80, 70, 60), then use
     //         them (not the raw numbers) to determine the correct letter
     //         grade for the average.
-    char letter = 'F';
+    char letter;
     if (average >= GRADE_A) {
         letter = 'A';
     } else if (average >= GRADE_B) {
@@ -82,6 +81,8 @@ int main()
         letter = 'C';
     } else if (average >= GRADE_D) {
         letter = 'D';
+    } else {
+        letter = 'F';
     }
 
     // TODO 7: Print the final summary in the exact format described in
@@ -93,13 +94,13 @@ int main()
     //         Maximum: <maximum>
     //         Average: <average>
     //         Letter grade: <letter>
-    std::cout << "--- Quiz Summary ---" << std::endl;
-    std::cout << "Scores entered: " << count << std::endl;
-    std::cout << "Sum: " << sum << std::endl;
-    std::cout << "Minimum: " << min << std::endl;
-    std::cout << "Maximum: " << max << std::endl;
-    std::cout << "Average: " << average << std::endl;
-    std::cout << "Letter grade: " << letter << std::endl;
+    std::cout << "--- Quiz Summary ---\n";
+    std::cout << "Scores entered: " << count << "\n";
+    std::cout << "Sum: " << sum << "\n";
+    std::cout << "Minimum: " << minScore << "\n";
+    std::cout << "Maximum: " << maxScore << "\n";
+    std::cout << "Average: " << average << "\n";
+    std::cout << "Letter grade: " << letter << "\n";
 
     return 0;
 }
